@@ -1,3 +1,0 @@
-# DEVELOP
-
-Branch develop.
