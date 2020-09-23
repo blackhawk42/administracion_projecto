@@ -25,10 +25,10 @@ import Orders from './Orders';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="textSecondary" align="center" data-testid = "footer1">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Equipo deportes
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -142,7 +142,7 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          <Typography data-testid = "titulo" component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Deportes APP
           </Typography>
           <IconButton color="inherit">
@@ -192,7 +192,7 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
+          <Box pt={4} data-testid = "footer">
             <Copyright />
           </Box>
         </Container>
