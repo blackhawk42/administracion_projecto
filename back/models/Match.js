@@ -26,7 +26,7 @@ const MatchSchema = mongoose.Schema({
         require: true
     },
     ftr:{
-        type: Number,
+        type: String,
         require:true
     },
     hst:{
