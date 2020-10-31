@@ -18,7 +18,7 @@ app.use(express.json({ extended: true}));
 const port = process.env.PORT || 4000
 
 //Importar rutas
-//app.use('/', require('./routes/datos'));
+app.use('/', require('./routes/match'));
 
 //Arrancar server
 app.listen(port, '0.0.0.0', () => {
