@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,6 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import AuthContext from '../context/authentication/authContext';
 
 function Copyright() {
   return (
@@ -128,8 +129,19 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  //Extraer la informacion de autenticacion
+  const authContext = useContext(AuthContext);
+  const { usuarioAutenticado, autenticado } = authContext;
+
+  useEffect(() => {
+    usuarioAutenticado();
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className={classes.root}>
+      { !autenticado ? ( <h1>USUARIO NO VALIDO</h1>) : (
+      <>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
@@ -197,6 +209,8 @@ export default function Dashboard() {
           </Box>
         </Container>
       </main>
+      </>
+      ) }
     </div>
   );
 }
