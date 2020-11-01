@@ -1,68 +1,59 @@
-import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
+import React, { useEffect, useState } from 'react';
+import clienteAxios from '../config/axios';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow
+} from "grommet";
+import Moment from 'react-moment';
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
+const Chart = () => {
 
-const rows = [
-  createData(0, '16 Mar, 2019', 'Cruz Azul', 'America', 'Francisco Chacon', "2 - 1"),
-  createData(1, '16 Mar, 2019', 'America', 'Cruz Azul', 'Francisco Chacon', "2 - 1"),
-  createData(2, '16 Mar, 2019', 'America', 'Cruz Azul', 'Francisco Chacon', "2 - 1"),
-  createData(3, '16 Mar, 2019', 'Cruz Azul', 'America', 'Francisco Chacon', "2 - 1"),
-  createData(4, '15 Mar, 2019', 'Cruz Azul', 'America', 'Francisco Chacon', "2 - 1"),
-];
+  const[data, setData] = useState([]);
+  
+  useEffect(() => {
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+    const getMatches = async () => {
+        const response = await clienteAxios.get('/');
+        setData(response.data.matches);
+    }
 
-const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}));
+    getMatches();
+    // eslint-disable-next-line
+    }, []);
 
-export default function Orders() {
-  const classes = useStyles();
-  return (
-    <React.Fragment>
-      <Title>Ultimos resultados</Title>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Fecha</TableCell>
-            <TableCell>Local</TableCell>
-            <TableCell>Visita</TableCell>
-            <TableCell>Arbitro</TableCell>
-            <TableCell align="right">Resultado</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
+
+  return (  
+    <Table>
+          <TableHeader>
+            <TableRow>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Home Team</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Away Team</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Home Goals</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Away Goals</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Winner</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Shoots to goal HOME</strong></TableCell>
+            <TableCell align="center" size="small" scope="col" border="bottom"><strong>Shoots to goal AWAY</strong></TableCell>
+            <TableCell align="end"scope="col" border="bottom"><strong></strong></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
+          </TableHeader>
+          <TableBody>
+            {data.map((match) =>
+              <TableRow className="data-row">
+                <TableCell align="center" >{match.homeTeam}</TableCell>
+                <TableCell align="center" >{match.awayTeam}</TableCell>
+                <TableCell align="center" >{match.homeGoals}</TableCell>
+                <TableCell align="center" >{match.awayGoals}</TableCell>
+                <TableCell align="center" >{match.ftr}</TableCell>
+                <TableCell align="center" >{match.hst}</TableCell>
+                <TableCell align="center" >{match.ast}</TableCell>
+              </TableRow>
+            )}
+          </TableBody>
       </Table>
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          Ver más
-        </Link>
-      </div>
-    </React.Fragment>
   );
 }
+ 
+export default Chart;
