@@ -18,19 +18,15 @@ const MatchSchema = mongoose.Schema({
         require: true
     },
     homeGoals:{
-        type: String,
+        type: Number,
         require: true
     },
-    fthg:{
+    awayGoals:{
         type: Number,
-        require:true
-    },
-    ftag:{
-        type: Number,
-        require:true
+        require: true
     },
     ftr:{
-        type: Number,
+        type: String,
         require:true
     },
     hst:{
