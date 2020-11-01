@@ -34,3 +34,22 @@ exports.getMatches = async(req,res) => {
 
     }
 }
+
+exports.getMatchesWithParams = async(req,res) => {
+    console.log(req.params.homeTeam);
+    try{
+
+        const matches = await Match.find({
+            homeTeam: req.params.homeTeam
+            
+        });
+        res.json({matches});
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).sed('Error');
+
+    }
+}
+
