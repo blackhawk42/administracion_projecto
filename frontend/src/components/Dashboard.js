@@ -120,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+  //const AuthContext = React.createContext([{}, function(){}]); //Agregado para prueba 
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
