@@ -6,7 +6,9 @@ import Deposits from './components/Deposits';
 import listItems from './components/listItems';
 import Orders from './components/Orders';
 import Title from './components/Title';
-import { Copyright } from './components/Dashboard';
+import Copyright from './components/Copyright'
+//import { Copyright } from './components/Dashboard';
+import Token from './config/token';
 
 import { shallow } from 'enzyme';
 import "@testing-library/jest-dom";
@@ -40,6 +42,10 @@ it('Title corriendo correctamente', () => {
   shallow(<Title/>);
 });
 
+it('Copyright corriendo correctamente', () => {
+  shallow(<Copyright/>);
+});
+
 /*it('Titulo correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
   expect(getByTestId('titulo').textContent).toBe("Deportes APP")
@@ -50,10 +56,7 @@ it('Footer correcto', () => {
   expect(getByTestId('footer').textContent).toBe("Copyright © Equipo deportes 2020.");
 });
 
-it('Copyright correcto', () => {
-  const {getByTestId} = render(<Dashboard/>);
-  expect(getByTestId('footer1').textContent).toBe("Copyright © Equipo deportes 2020.");
-})*/
+*/ 
 
 it('Mas informacion correcto', () => {
   const {getByTestId} = render(<Deposits/>);
@@ -74,3 +77,26 @@ it('Genera TableBody', () => {
   const {getByTestId} = render(<Orders/>);
   expect((getByTestId('Cuerpo'))).toBeTruthy()
 });
+/*
+it('Autentifica token', () => {
+  const  = render(<token/>);
+  expect((getByTestId())).toHaveBeenCalledWith(expect.anything())
+});*/
+
+/*it('Copyright correcto', () => {
+  const wrapper = shallow(<Dashboard />);
+  expect(wrapper.containsMatchingElement(<Copyright />)).toEqual(true);
+  //const {getByTestId} = render(<Dashboard/>);
+  //expect(getByTestId('footer1')).anything();
+  //expect(getByTestId('footer1')).anything();
+});*/
+
+/*
+it('Abre HandleDrawer', () {
+
+});
+
+it('Cierra HandleDrawer', () {
+
+});
+*/
