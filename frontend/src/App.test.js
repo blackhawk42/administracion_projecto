@@ -81,8 +81,9 @@ it('prueba1', () => {
   renderer.render(<App />);
   const result = renderer.getRenderOutput();
   const token = localStorage.getItem('token');
-  expect(token).toBe(localStorage.getItem('token'));
-  
+  expect(token).toBe(localStorage.getItem('token'))
+});
+
 it('Genera TableBody', () => {
   const {getByTestId} = render(<Orders/>);
   expect((getByTestId('Cuerpo'))).toBeTruthy()
