@@ -14,6 +14,9 @@ import { shallow } from 'enzyme';
 import "@testing-library/jest-dom";
 import { render } from '@testing-library/react';
 
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+
 it('Sistema corriendo correctamente', () => {
     shallow(<App/>);
 });
@@ -73,6 +76,13 @@ it('Nombre del equipo favorito correcto', () => {
   expect((getByTestId('equipoFav').textContent)).toBe("Cruz Azul")
 });
 
+it('prueba1', () => {
+  const renderer = new ShallowRenderer();
+  renderer.render(<App />);
+  const result = renderer.getRenderOutput();
+  const token = localStorage.getItem('token');
+  expect(token).toBe(localStorage.getItem('token'));
+  
 it('Genera TableBody', () => {
   const {getByTestId} = render(<Orders/>);
   expect((getByTestId('Cuerpo'))).toBeTruthy()
