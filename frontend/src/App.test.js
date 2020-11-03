@@ -54,11 +54,6 @@ describe('Deposits', () => {
     shallow(<Deposits/>);
   });
 
-  it('Mas informacion correcto', () => {
-    const {getByTestId} = render(<Deposits/>);
-    expect((getByTestId('Masinfo').textContent)).toBe("Más información")
-  });
-
   it('Nombre del equipo favorito correcto', () => {
     const {getByTestId} = render(<Deposits/>);
     expect((getByTestId('equipoFav').textContent)).toBe("Cruz Azul")
@@ -94,7 +89,7 @@ describe('Copyright', () => {
   });
 });
 
-it('should return the initial state', () => {
+it('alertaReducer', () => {
     expect(alertaReducer([{"alerta": null}], 'Todos los campos son obligatorios', 'alerta-error')).toEqual([
       {
         alerta: null
@@ -102,7 +97,7 @@ it('should return the initial state', () => {
     ])
   });
 
-  it('should handle ADD_TODO', () => {
+  it('alertaReducer', () => {
       expect(
         alertaReducer([{"alerta": true}], {
           type: types.MOSTRAR_ALERTA,
@@ -127,12 +122,7 @@ it('should return the initial state', () => {
       ).toEqual(
         {"alerta": null}
       )
-    })
-
-
-
-
-
+    });
 
 /*it('Titulo correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
