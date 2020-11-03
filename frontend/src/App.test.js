@@ -16,37 +16,80 @@ import { render } from '@testing-library/react';
 
 import ShallowRenderer from 'react-test-renderer/shallow';
 
+describe('App', () => {
+  it('Sistema corriendo correctamente', () => {
+      shallow(<App/>);
+  });
 
-it('Sistema corriendo correctamente', () => {
-    shallow(<App/>);
+  it('prueba1', () => {
+    const renderer = new ShallowRenderer();
+    renderer.render(<App />);
+    const result = renderer.getRenderOutput();
+    const token = localStorage.getItem('token');
+    expect(token).toBe(localStorage.getItem('token'))
+  });
 });
 
-it('Dashboard corriendo correctamente', () => {
-  shallow(<Dashboard/>);
+describe('Dashboard', () => {
+  it('Dashboard corriendo correctamente', () => {
+    shallow(<Dashboard/>);
+  });
 });
 
-it('Chart corriendo correctamente', () => {
-  shallow(<Chart/>);
+describe('Chart', () => {
+  it('Chart corriendo correctamente', () => {
+    shallow(<Chart/>);
+  });
+
+  it('Titulo correcto de Charts', () => {
+    const {getByTestId} = render(<Chart/>);
+    expect((getByTestId('titulo grafica').textContent)).toBe("Datos")
+  });
 });
 
-it('Deposits corriendo correctamente', () => {
-  shallow(<Deposits/>);
+describe('Deposits', () => {
+  it('Deposits corriendo correctamente', () => {
+    shallow(<Deposits/>);
+  });
+  
+  it('Mas informacion correcto', () => {
+    const {getByTestId} = render(<Deposits/>);
+    expect((getByTestId('Masinfo').textContent)).toBe("Más información")
+  });
+
+  it('Nombre del equipo favorito correcto', () => {
+    const {getByTestId} = render(<Deposits/>);
+    expect((getByTestId('equipoFav').textContent)).toBe("Cruz Azul")
+  });
 });
 
-it('list Items corriendo correctamente', () => {
-  shallow(<listItems/>);
+describe('Orders', () => {
+  it('Orders corriendo correctamente', () => {
+    shallow(<Orders/>);
+  });
+  
+  it('Genera TableBody', () => {
+    const {getByTestId} = render(<Orders/>);
+    expect((getByTestId('Cuerpo'))).toBeTruthy()
+  });
 });
 
-it('Orders corriendo correctamente', () => {
-  shallow(<Orders/>);
+describe('listItems', () => {
+  it('list Items corriendo correctamente', () => {
+    shallow(<listItems/>);
+  });
 });
 
-it('Title corriendo correctamente', () => {
-  shallow(<Title/>);
+describe('Title', () => {
+  it('Title corriendo correctamente', () => {
+    shallow(<Title/>);
+  });
 });
 
-it('Copyright corriendo correctamente', () => {
-  shallow(<Copyright/>);
+describe('Copyright', () => {
+  it('Copyright corriendo correctamente', () => {
+    shallow(<Copyright/>);
+  });
 });
 
 /*it('Titulo correcto', () => {
@@ -61,33 +104,6 @@ it('Footer correcto', () => {
 
 */ 
 
-it('Mas informacion correcto', () => {
-  const {getByTestId} = render(<Deposits/>);
-  expect((getByTestId('Masinfo').textContent)).toBe("Más información")
-});
-
-it('Titulo correcto de Charts', () => {
-  const {getByTestId} = render(<Chart/>);
-  expect((getByTestId('titulo grafica').textContent)).toBe("Datos")
-});
-
-it('Nombre del equipo favorito correcto', () => {
-  const {getByTestId} = render(<Deposits/>);
-  expect((getByTestId('equipoFav').textContent)).toBe("Cruz Azul")
-});
-
-it('prueba1', () => {
-  const renderer = new ShallowRenderer();
-  renderer.render(<App />);
-  const result = renderer.getRenderOutput();
-  const token = localStorage.getItem('token');
-  expect(token).toBe(localStorage.getItem('token'))
-});
-
-it('Genera TableBody', () => {
-  const {getByTestId} = render(<Orders/>);
-  expect((getByTestId('Cuerpo'))).toBeTruthy()
-});
 /*
 it('Autentifica token', () => {
   const  = render(<token/>);
