@@ -16,9 +16,9 @@ it('Sistema corriendo correctamente', () => {
     shallow(<App/>);
 });
 
-/*it('Dashboard corriendo correctamente', () => {
+it('Dashboard corriendo correctamente', () => {
   shallow(<Dashboard/>);
-});*/
+});
 
 it('Chart corriendo correctamente', () => {
   shallow(<Chart/>);
@@ -60,6 +60,12 @@ it('Mas informacion correcto', () => {
   expect((getByTestId('Masinfo').textContent)).toBe("Más información")
 });
 
+it('Prevent default correcto', () => {
+  const res = Deposits.preventDefault('#');
+  const {getByTestId} = render(<Deposits/>);
+  expect(res).toBeTruthy()
+});
+
 it('Titulo correcto de Charts', () => {
   const {getByTestId} = render(<Chart/>);
   expect((getByTestId('titulo grafica').textContent)).toBe("Datos")
@@ -70,3 +76,7 @@ it('Nombre del equipo favorito correcto', () => {
   expect((getByTestId('equipoFav').textContent)).toBe("Cruz Azul")
 });
 
+it('Genera TableBody', () => {
+  const {getByTestId} = render(<Orders/>);
+  expect((getByTestId('Cuerpo'))).toBeTruthy()
+});

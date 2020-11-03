@@ -39,7 +39,7 @@ const Chart = () => {
             <TableCell align="end"scope="col" border="bottom"><strong></strong></TableCell>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody data-testid="Cuerpo">
             {data.map((match) =>
               <TableRow className="data-row">
                 <TableCell align="center" >{match.homeTeam}</TableCell>
