@@ -9,8 +9,10 @@ import Title from './components/Title';
 import Copyright from './components/Copyright'
 //import { Copyright } from './components/Dashboard';
 import Token from './config/token';
+import alertaReducer from './context/alertas/alertaReducer';
+import  * as types from './types/index.js';
 
-import { shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import "@testing-library/jest-dom";
 import { render } from '@testing-library/react';
 
@@ -51,7 +53,7 @@ describe('Deposits', () => {
   it('Deposits corriendo correctamente', () => {
     shallow(<Deposits/>);
   });
-  
+
   it('Mas informacion correcto', () => {
     const {getByTestId} = render(<Deposits/>);
     expect((getByTestId('Masinfo').textContent)).toBe("Más información")
@@ -67,7 +69,7 @@ describe('Orders', () => {
   it('Orders corriendo correctamente', () => {
     shallow(<Orders/>);
   });
-  
+
   it('Genera TableBody', () => {
     const {getByTestId} = render(<Orders/>);
     expect((getByTestId('Cuerpo'))).toBeTruthy()
@@ -92,6 +94,46 @@ describe('Copyright', () => {
   });
 });
 
+it('should return the initial state', () => {
+    expect(alertaReducer([{"alerta": null}], 'Todos los campos son obligatorios', 'alerta-error')).toEqual([
+      {
+        alerta: null
+      }
+    ])
+  });
+
+  it('should handle ADD_TODO', () => {
+      expect(
+        alertaReducer([{"alerta": true}], {
+          type: types.MOSTRAR_ALERTA,
+          alerta: true
+        })
+      ).toEqual({"alerta": undefined})
+
+      expect(
+        alertaReducer(
+          [
+            {
+              text: 'Use Redux',
+              completed: false,
+              id: 0
+            }
+          ],
+          {
+            type: types.OCULTAR_ALERTA,
+            text: 'Run the tests'
+          }
+        )
+      ).toEqual(
+        {"alerta": null}
+      )
+    })
+
+
+
+
+
+
 /*it('Titulo correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
   expect(getByTestId('titulo').textContent).toBe("Deportes APP")
@@ -102,7 +144,7 @@ it('Footer correcto', () => {
   expect(getByTestId('footer').textContent).toBe("Copyright © Equipo deportes 2020.");
 });
 
-*/ 
+*/
 
 /*
 it('Autentifica token', () => {
