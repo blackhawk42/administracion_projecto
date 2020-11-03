@@ -60,12 +60,6 @@ it('Mas informacion correcto', () => {
   expect((getByTestId('Masinfo').textContent)).toBe("Más información")
 });
 
-it('Prevent default correcto', () => {
-  const res = Deposits.preventDefault('#');
-  const {getByTestId} = render(<Deposits/>);
-  expect(res).toBeTruthy()
-});
-
 it('Titulo correcto de Charts', () => {
   const {getByTestId} = render(<Chart/>);
   expect((getByTestId('titulo grafica').textContent)).toBe("Datos")
