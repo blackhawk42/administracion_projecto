@@ -7,7 +7,7 @@ const matchController = require('../controllers/matchController');
 //Agregar match
 //Obtener todos los matches
 router.get('/',
-    auth,
+    //auth,
     matchController.getMatches
 )
 
