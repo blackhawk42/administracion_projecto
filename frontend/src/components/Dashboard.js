@@ -23,19 +23,8 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import AuthContext from '../context/authentication/authContext';
+import Copyright from '../components/Copyright';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center" data-testid = "footer1">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Equipo deportes
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const drawerWidth = 240;
 
@@ -120,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  //const AuthContext = React.createContext([{}, function(){}]); //Agregado para prueba 
+  //const AuthContext = React.createContext([{}, function(){}]); //Agregado para prueba
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -141,7 +130,7 @@ export default function Dashboard() {
 
   return (
     <div className={classes.root}>
-   { //!autenticado ? ( <h1>USUARIO NO VALIDO</h1>) : ( 
+   { !autenticado ? ( <h1>USUARIO NO VALIDO</h1>) : (
       <>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -211,7 +200,7 @@ export default function Dashboard() {
         </Container>
       </main>
       </>
-      //) 
+      )
     }
     </div>
   );

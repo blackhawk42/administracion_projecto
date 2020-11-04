@@ -1,3 +1,4 @@
+
 import React from 'react';
 import App from './App';
 import Dashboard from './components/Dashboard';
@@ -145,19 +146,17 @@ it('alertaReducer', () => {
         expect(clienteAxios.defaults.headers.common['x-auth-token']).toBeUndefined();
     });
 
-  
+
 
 
 /*it('Titulo correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
   expect(getByTestId('titulo').textContent).toBe("Deportes APP")
 });
-
 it('Footer correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
   expect(getByTestId('footer').textContent).toBe("Copyright © Equipo deportes 2020.");
 });
-
 */
 
 /*
@@ -176,10 +175,7 @@ it('Autentifica token', () => {
 
 /*
 it('Abre HandleDrawer', () {
-
 });
-
 it('Cierra HandleDrawer', () {
-
 });
 */
