@@ -11,7 +11,7 @@ import Moment from 'react-moment';
 
 const Chart = () => {
 
-  const[data, setData] = useState([]);
+  const [data, setData] = useState([{}, function () {}]);
   
   useEffect(() => {
 

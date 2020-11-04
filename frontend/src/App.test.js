@@ -71,6 +71,15 @@ describe('Orders', () => {
     const {getByTestId} = render(<Orders/>);
     expect((getByTestId('Cuerpo'))).toBeTruthy()
   });
+
+  it('Sets Data.Map(matches)', () => {
+    const wrapper = shallow(<Orders {...[{}, function () {}]}/>)
+  });
+
+  it('Gets Matches', () => {
+    const wrapper = shallow(<Orders {...[{}, function () {}]}/>)
+    // wrapper.invoke(useEffect([{}, function () {}]))
+  });
 });
 
 describe('listItems', () => {
