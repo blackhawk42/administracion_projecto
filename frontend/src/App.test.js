@@ -136,40 +136,7 @@ it('alertaReducer', () => {
         expect(clienteAxios.defaults.headers.common['x-auth-token']).toBeUndefined();
     });
 
-    it('alertaReducer', () => {
-        expect(alertaReducer([{"alerta": null}], 'Todos los campos son obligatorios', 'alerta-error')).toEqual([
-          {
-            alerta: null
-          }
-        ])
-      });
-
-      it('alertaReducer', () => {
-          expect(
-            alertaReducer([{"alerta": true}], {
-              type: types.MOSTRAR_ALERTA,
-              alerta: true
-            })
-          ).toEqual({"alerta": undefined})
-
-          expect(
-            alertaReducer(
-              [
-                {
-                  text: 'Use Redux',
-                  completed: false,
-                  id: 0
-                }
-              ],
-              {
-                type: types.OCULTAR_ALERTA,
-                text: 'Run the tests'
-              }
-            )
-          ).toEqual(
-            {"alerta": null}
-          )
-        });
+  
 
 
 /*it('Titulo correcto', () => {
