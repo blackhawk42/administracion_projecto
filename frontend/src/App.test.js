@@ -8,9 +8,11 @@ import Orders from './components/Orders';
 import Title from './components/Title';
 import Copyright from './components/Copyright'
 //import { Copyright } from './components/Dashboard';
-import Token from './config/token';
 import alertaReducer from './context/alertas/alertaReducer';
 import  * as types from './types/index.js';
+import clienteAxios from './config/axios';
+import tokenAuth from './config/token';
+import alertaState from './context/alertas/alertaState';
 
 import { shallow, ShallowWrapper } from 'enzyme';
 import "@testing-library/jest-dom";
@@ -123,6 +125,52 @@ it('alertaReducer', () => {
         {"alerta": null}
       )
     });
+
+    it("Asignar token", () => {
+        var token = 'dummy';
+        tokenAuth(token);
+        expect(clienteAxios.defaults.headers.common['x-auth-token']).toEqual(token);
+    });
+    it ("Limpiar token", () => {
+        tokenAuth(undefined);
+        expect(clienteAxios.defaults.headers.common['x-auth-token']).toBeUndefined();
+    });
+
+    it('alertaReducer', () => {
+        expect(alertaReducer([{"alerta": null}], 'Todos los campos son obligatorios', 'alerta-error')).toEqual([
+          {
+            alerta: null
+          }
+        ])
+      });
+
+      it('alertaReducer', () => {
+          expect(
+            alertaReducer([{"alerta": true}], {
+              type: types.MOSTRAR_ALERTA,
+              alerta: true
+            })
+          ).toEqual({"alerta": undefined})
+
+          expect(
+            alertaReducer(
+              [
+                {
+                  text: 'Use Redux',
+                  completed: false,
+                  id: 0
+                }
+              ],
+              {
+                type: types.OCULTAR_ALERTA,
+                text: 'Run the tests'
+              }
+            )
+          ).toEqual(
+            {"alerta": null}
+          )
+        });
+
 
 /*it('Titulo correcto', () => {
   const {getByTestId} = render(<Dashboard/>);
