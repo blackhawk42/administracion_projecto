@@ -9,9 +9,11 @@ import tokenAuth from './config/token';
 
 //Revisar si tenemos un token
 const token = localStorage.getItem('token');
+
 if (token) {
   tokenAuth(token);
 }
+
 
 function App() {
   return (

@@ -1,6 +1,5 @@
 const express = require('express');
 const conectarDB = require('./config/db');
-const conectarRedisCache = require('./config/redis_cache')
 const cors = require('cors');
 
 //Crear el servidor
@@ -8,9 +7,6 @@ const app = express();
 
 //Conectar a la base de datos
 conectarDB();
-
-// Conectar al cache de redis
-cache = conectarRedisCache();
 
 //habilitar cors
 app.use(cors());
@@ -22,7 +18,7 @@ app.use(express.json({ extended: true}));
 const port = process.env.PORT || 4000
 
 //Importar rutas
-app.use('/', cache.route(), require('./routes/match'));
+app.use('/', require('./routes/match'));
 
 app.use('/api/auth', require('./routes/auth'));
 
