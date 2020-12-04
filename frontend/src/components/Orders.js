@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import clienteAxios from '../config/axios';
+import clienteAxios from '../config/axiosGraph';
 import {
   Table,
   TableBody,
@@ -11,13 +11,27 @@ import Moment from 'react-moment';
 
 const Chart = () => {
 
-  const [data, setData] = useState([{}, function () {}]);
+  const [data, setData] = useState([{}]);
   
   useEffect(() => {
 
     const getMatches = async () => {
-        const response = await clienteAxios.get('/');
-        setData(response.data.matches);
+        const response = await clienteAxios.post('api/matches', {
+          query: `
+            {
+              matches(hometeam:"Arsenal", awayteam:"Chelsea") {
+                homeTeam
+                  awayTeam
+                  homeGoals
+                  awayGoals
+                  ftr
+                  hst
+                  ast
+              }
+           }
+          `
+        });
+        setData(response.data);
     }
 
     getMatches();

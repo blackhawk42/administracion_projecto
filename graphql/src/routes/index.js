@@ -6,7 +6,7 @@ const matchController = require('../controllers/matchController')
 
 const routes = [
   {
-    method: 'GET',
+    method: 'POST',
     url: '/api/matches',
     handler: matchController.getMatches
   }
