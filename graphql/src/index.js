@@ -1,5 +1,10 @@
+const cors = require('cors');
+
 // Import Server
 const fastify = require('./server.js')
+
+//habilitar cors
+fastify.use(cors());
 
 // Import external dependancies
 const gql = require('fastify-gql')
@@ -30,7 +35,7 @@ routes.forEach((route, index) => {
 // Run the server!
 const start = async () => {
 	try {
-		await fastify.listen(5000, '0.0.0.0')
+		await fastify.listen(5001, '0.0.0.0')
 		fastify.swagger()
 		fastify.log.info(`server listening on ${fastify.server.address().port}`)
 	} catch (err) {

@@ -11,8 +11,7 @@ exports.getMatches = async (req) => {
 		console.log(hometeam);
 		console.log(awayteam);
 		const matches = await Match.find({ 
-			homeTeam: hometeam, 
-			awayTeam: awayteam
+
 		})
 		return matches
 	} catch (err) {
