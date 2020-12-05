@@ -18,17 +18,15 @@ const Chart = () => {
     const getMatches = async () => {
         const response = await clienteAxios.post('api/matches', {
           query: `
-            {
-              matches(hometeam:"Arsenal", awayteam:"Chelsea") {
-                homeTeam
-                  awayTeam
-                  homeGoals
-                  awayGoals
-                  ftr
-                  hst
-                  ast
-              }
-           }
+            matches {
+              homeTeam
+              awayTeam
+              homeGoals
+              awayGoals
+              ftr
+              hst
+              ast
+            }
           `
         });
         setData(response.data);
