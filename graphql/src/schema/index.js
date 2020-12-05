@@ -41,12 +41,8 @@ const RootQuery = new GraphQLObjectType({
 	fields: {
 		matches: {
 			type: new GraphQLList(matchType),
-			args: { 
-				hometeam: { type: GraphQLString },
-				awayteam: { type: GraphQLString }
-			},
 			async resolve(parent, args) {
-				return await matchController.getMatches(args)
+				return await matchController.getMatches()
 			}
 		},
 	}
