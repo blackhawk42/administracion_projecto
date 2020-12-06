@@ -24,6 +24,8 @@ app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/usuarios', require('./routes/usuarios'));
 
+app.use('/teams', require('./routes/team'))
+
 //Arrancar server
 app.listen(port, '0.0.0.0', () => {
     console.log(`El server esta corriendo en el puerto ${port}`);
