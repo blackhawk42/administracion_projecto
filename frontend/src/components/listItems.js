@@ -9,6 +9,9 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import Link from '@material-ui/core/Link';
+
+const preventDefault = (event) => event.preventDefault();
 
 export const mainListItems = (
   <div>
@@ -23,6 +26,9 @@ export const mainListItems = (
         <DoneIcon />
       </ListItemIcon>
       <ListItemText primary="Predicciones" />
+      <Link href="/prediction" onClick={preventDefault}>
+          Link
+      </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
