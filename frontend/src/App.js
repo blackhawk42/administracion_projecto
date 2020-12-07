@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import AlertaState from './context/alertas/alertaState';
 import AuthState from './context/authentication/authState';
 import tokenAuth from './config/token';
+import Prediction from './components/Prediction';
 
 //Revisar si tenemos un token
 const token = localStorage.getItem('token');
@@ -24,6 +25,7 @@ function App() {
             <Switch>
                 <Route exact path = "/" component = {Login}/>
                 <Route exact path = "/dashboard" component = {Dashboard}/>
+                <Route exact path = "/prediction" component = {Prediction}/>
             </Switch>
           </Router>
         </AuthState>
