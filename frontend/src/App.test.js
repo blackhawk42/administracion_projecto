@@ -26,8 +26,6 @@ import "@testing-library/jest-dom";
 import { render } from '@testing-library/react';
 
 import ShallowRenderer from 'react-test-renderer/shallow';
-import Formulario from './components/Formulario';
-import Prediction from './components/Prediction';
 
 describe('App', () => {
   it('Sistema corriendo correctamente', () => {
