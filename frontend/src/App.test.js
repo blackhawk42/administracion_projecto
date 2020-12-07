@@ -7,7 +7,13 @@ import Deposits from './components/Deposits';
 import listItems from './components/listItems';
 import Orders from './components/Orders';
 import Title from './components/Title';
-import Copyright from './components/Copyright'
+import Copyright from './components/Copyright';
+import Equipo from './components/Equipo';
+import Login from './components/Login';
+import ListaPrediccion from './components/ListaPrediccion';
+import Header from './components/Header';
+import Prediction from './components/Prediction';
+import Formulario from './components/Formulario';
 //import { Copyright } from './components/Dashboard';
 import alertaReducer from './context/alertas/alertaReducer';
 import  * as types from './types/index.js';
@@ -20,6 +26,8 @@ import "@testing-library/jest-dom";
 import { render } from '@testing-library/react';
 
 import ShallowRenderer from 'react-test-renderer/shallow';
+import Formulario from './components/Formulario';
+import Prediction from './components/Prediction';
 
 describe('App', () => {
   it('Sistema corriendo correctamente', () => {
@@ -147,7 +155,47 @@ it('alertaReducer', () => {
         expect(clienteAxios.defaults.headers.common['x-auth-token']).toBeUndefined();
     });
 
+    describe('Equipo', () => {
+      it('Equipo corriendo correctamente', () => {
+        shallow(<Equipo/>);
+      });
+    });
 
+    describe('Formulario', () => {
+      it('Formulario corriendo correctamente', () => {
+        shallow(<Formulario/>);
+      });
+    });
+
+    describe('LogIn', () => {
+      it('LogIn corriendo correctamente', () => {
+        shallow(<Login/>);
+      });
+    });
+
+    describe('ListaPrediccion', () => {
+      it('ListaPrediccion corriendo correctamente', () => {
+        shallow(<ListaPrediccion/>);
+      });
+    });
+
+    describe('Header', () => {
+      it('Header corriendo correctamente', () => {
+        shallow(<Header/>);
+      });
+    });
+
+    describe('Prediction', () => {
+      it('Prediction corriendo correctamente', () => {
+        shallow(<Prediction/>);
+      });
+    });
+
+    describe('ListItems', () => {
+      it('ListItems corriendo correctamente', () => {
+        shallow(<listItems/>);
+      });
+    });
 
 
 /*it('Titulo correcto', () => {
