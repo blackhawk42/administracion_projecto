@@ -34,10 +34,8 @@ const ListaPrediccion = () => {
         // eslint-disable-next-line
     }, [team1, team2]);
 
-    if(!team1[0] )
-    return null;
 
-    if(!team2[0] )
+    if(!team[0])
     return null;
 
     return (
